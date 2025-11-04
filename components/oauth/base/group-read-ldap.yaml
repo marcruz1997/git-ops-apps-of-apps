@@ -1,0 +1,11 @@
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: '***********'
+  labels:
+    openshift.io/ldap.host: '***********'
+  annotations:
+    openshift.io/ldap.sync-time: '***********'
+    openshift.io/ldap.uid: '***********'
+    openshift.io/ldap.url: '***********'
+users:

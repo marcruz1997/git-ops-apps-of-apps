@@ -1,0 +1,51 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: bpr1hub01-cmv6d
+  name: 
+  namespace: openshift-machine-api
+spec:
+  replicas: 06
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: 
+      machine.openshift.io/cluster-api-machineset: 
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: 
+        machine.openshift.io/cluster-api-machine-role: infra
+        machine.openshift.io/cluster-api-machine-type: infra
+        machine.openshift.io/cluster-api-machineset: 
+    spec:
+      metadata:
+        labels:
+          node-role.kubernetes.io/infra: ""
+          node.btb/servico: infra
+      taints:
+      - key: node-role.kubernetes.io/infra
+        effect: NoSchedule
+      providerSpec:
+        value:
+          apiVersion: vsphereprovider.openshift.io/v1beta1
+          credentialsSecret:
+            name: vsphere-cloud-credentials
+          diskGiB: 120
+          kind: VSphereMachineProviderSpec
+          memoryMiB: 16384
+          network:
+            devices:
+            - networkName: '***********'
+          numCPUs: 4
+          numCoresPerSocket: 2
+          snapshot: ""
+          template: 
+          userDataSecret:
+            name: worker-user-data
+          workspace:
+            datacenter: 
+            datastore: 
+            folder: 
+            resourcePool: 
+            server: 

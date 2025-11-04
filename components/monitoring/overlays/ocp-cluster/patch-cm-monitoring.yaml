@@ -1,0 +1,55 @@
+- op: add
+  path: /data/config.yaml
+  value: |
+    enableUserWorkload: true
+    alertmanagerMain:
+      volumeClaimTemplate:
+        metadata:
+          name: pvc-alertmanager
+        spec:
+          storageClassName: nfs
+          resources:
+            requests:
+              storage: 10Gi
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    prometheusOperator:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    prometheusK8s:
+      volumeClaimTemplate:
+        metadata:
+          name: pvc-prometheus
+        spec:
+          storageClassName: nfs
+          resources:
+            requests:
+              storage: 100Gi
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    kubeStateMetrics:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    openshiftStateMetrics:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    telemeterClient:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    thanosQuerier:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    monitoringPlugin:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+
+    metricsServer:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""

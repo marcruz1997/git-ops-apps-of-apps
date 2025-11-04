@@ -1,0 +1,44 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  annotations:
+  name: nncp-bpr1pwr07-bond1-vlan-151-152
+spec:
+  desiredState:
+    interfaces:
+      - link-aggregation:
+          mode: 802.3ad
+          options: {}
+          port:
+            - eno12409np1
+            - ens2f1np1
+        mtu: 9000
+        name: bond1
+        state: up
+        type: bond
+      - ipv4:
+          address:
+            - ip: 10.160.157.8
+              prefix-length: 24
+          dhcp: false
+          enabled: true
+        name: bond1.151
+        state: up
+        type: vlan
+        vlan:
+          base-iface: bond1
+          id: 151
+      - ipv4:
+          address:
+            - ip: 10.160.158.8
+              prefix-length: 24
+          dhcp: false
+          enabled: true
+        name: bond1.152
+        state: up
+        type: vlan
+        vlan:
+          base-iface: bond1
+          id: 152
+  nodeSelector:
+    kubernetes.io/hostname: bpr1pwr07.btb.corp

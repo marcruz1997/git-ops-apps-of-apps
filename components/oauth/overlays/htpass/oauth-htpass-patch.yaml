@@ -1,0 +1,33 @@
+- op: add
+  path: /spec/identityProviders/-
+  value:
+    name: Local
+    mappingMethod: claim
+    type: HTPasswd
+    htpasswd:
+      fileData:
+        name: htpass-secret
+
+- op: add
+  path: /spec/identityProviders/-
+  value:
+    name: '***********'
+    mappingMethod: claim
+    type: LDAP
+    ldap:
+      attributes:
+        id:
+          - sAMAccountName
+        email:
+          - mail
+        name:
+          - cn
+        preferredUsername:
+          - sAMAccountName
+      bindDN: '***********'
+      bindPassword:
+        name: ldap-secret
+      ca:
+        name: ca-ldap
+      insecure: false
+      url: '***********'

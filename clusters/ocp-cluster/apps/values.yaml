@@ -1,0 +1,97 @@
+argocd: 
+  namespace: openshift-gitops
+
+project:
+  name: ocp-cluster-config
+  description: day2 - apps of apps config clusters
+  sourceRepos:
+    - https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  destinations:
+    - namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+
+applications:
+
+  # - name: oauth
+  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  #   path: clusters/ocp-cluster/oauth
+  #   destinationNamespace: openshift-config
+  #   destinationServer: https://kubernetes.default.svc
+  #   syncPolicy:
+  #     automated:
+  #       prune: true
+  #       selfHeal: true
+  #     syncOptions:
+  #       - CreateNamespace=true
+        
+  # - name: monitoring
+  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  #   path: clusters/ocp-cluster/monitoring
+  #   destinationNamespace: openshift-monitoring
+  #   destinationServer: https://kubernetes.default.svc
+  #   syncPolicy:
+  #     automated:
+  #       prune: true
+  #       selfHeal: true
+  #     syncOptions:
+  #       - CreateNamespace=true
+
+  # - name: machines
+  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  #   path: clusters/ocp-cluster/machines
+  #   destinationNamespace: openshift-machine-api
+  #   destinationServer: https://kubernetes.default.svc
+  #   syncPolicy:
+  #     automated:
+  #       prune: true
+  #       selfHeal: true
+  #     syncOptions:
+  #       - CreateNamespace=true
+
+  # - name: image-registry
+  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  #   path: clusters/ocp-cluster/image-registry
+  #   destinationNamespace: openshift-image-registry
+  #   destinationServer: https://kubernetes.default.svc
+  #   syncPolicy:
+  #     automated:
+  #       prune: true
+  #       selfHeal: true
+  #     syncOptions:
+  #       - CreateNamespace=true
+
+  # - name: etcd-bkp
+  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  #   path: clusters/ocp-cluster/etcd-bkp
+  #   destinationNamespace: ocp-etcd-backup
+  #   destinationServer: https://kubernetes.default.svc
+  #   syncPolicy:
+  #     automated:
+  #       prune: true
+  #       selfHeal: true
+  #     syncOptions:
+  #       - CreateNamespace=true
+
+  # - name: ntp-server
+  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  #   path: clusters/ocp-cluster/ntp-server
+  #   destinationNamespace: ocp-ntp-server
+  #   destinationServer: https://kubernetes.default.svc
+  #   syncPolicy:
+  #     automated:
+  #       prune: true
+  #       selfHeal: true
+  #     syncOptions:
+  #       - CreateNamespace=true
+
+  # - name: nmstate
+  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+  #   path: clusters/ocp-cluster/nmstate
+  #   destinationNamespace: openshift-nmstate
+  #   destinationServer: https://kubernetes.default.svc
+  #   syncPolicy:
+  #     automated:
+  #       prune: true
+  #       selfHeal: true
+  #     syncOptions:
+  #       - CreateNamespace=true

@@ -1,0 +1,62 @@
+apiVersion: loki.grafana.com/v1
+kind: LokiStack
+metadata:
+  name: logging-loki
+  namespace: openshift-logging
+spec:
+  limits:
+    global:
+      ingestion:
+        ingestionRate: 8
+        ingestionBurstSize: 16
+        maxLabelNameLength: 1024
+        maxLabelValueLength: 2048
+        maxLabelNamesPerSeries: 30
+        maxGlobalStreamsPerTenant: 10000
+        maxLineSize: 256000
+      queries:
+        maxEntriesLimitPerQuery: 10000
+        maxChunksPerQuery: 2000000
+        maxQuerySeries: 1000
+        queryTimeout: 1m
+      retention:
+        days: 7
+  tenants:
+    mode: openshift-logging
+  managementState: Managed
+  rules:
+    enabled: true
+  replicationFactor: 1
+  size: 1x.extra-small
+  storage:
+    schemas:
+      - effectiveDate: '2025-01-01'
+        version: v13
+    secret:
+      name: logging-loki-s3
+      type: s3
+    tls:
+      caName: openshift-service-ca.crt
+  storageClassName: vxflexos
+  template:
+    compactor:
+      nodeSelector:
+        node-role.kubernetes.io/master: ''
+    gateway:
+      nodeSelector:
+        node-role.kubernetes.io/master: ''
+    indexGateway:
+      nodeSelector:
+        node-role.kubernetes.io/master: ''
+    ingester:
+      nodeSelector:
+        node-role.kubernetes.io/master: ''
+    querier:
+      nodeSelector:
+        node-role.kubernetes.io/master: ''
+    queryFrontend:
+      nodeSelector:
+        node-role.kubernetes.io/master: ''
+    ruler:
+      nodeSelector:
+        node-role.kubernetes.io/master: ''
