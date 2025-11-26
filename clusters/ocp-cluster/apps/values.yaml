@@ -48,17 +48,17 @@ applications:
   #     syncOptions:
   #       - CreateNamespace=true
 
-  # - name: etcd-bkp
-  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
-  #   path: clusters/ocp-cluster/etcd-bkp
-  #   destinationNamespace: ocp-etcd-backup
-  #   destinationServer: https://kubernetes.default.svc
-  #   syncPolicy:
-  #     automated:
-  #       prune: true
-  #       selfHeal: true
-  #     syncOptions:
-  #       - CreateNamespace=true
+  - name: etcd-bkp
+    repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+    path: clusters/ocp-cluster/etcd-bkp
+    destinationNamespace: ocp-etcd-backup
+    destinationServer: https://kubernetes.default.svc
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
 
   # - name: ntp-server
   #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
