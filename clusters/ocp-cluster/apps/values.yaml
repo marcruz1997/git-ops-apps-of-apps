@@ -24,18 +24,6 @@ applications:
   #     syncOptions:
   #       - CreateNamespace=true
         
-  # - name: monitoring
-  #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
-  #   path: clusters/ocp-cluster/monitoring
-  #   destinationNamespace: openshift-monitoring
-  #   destinationServer: https://kubernetes.default.svc
-  #   syncPolicy:
-  #     automated:
-  #       prune: true
-  #       selfHeal: true
-  #     syncOptions:
-  #       - CreateNamespace=true
-
   # - name: machines
   #   repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
   #   path: clusters/ocp-cluster/machines
@@ -95,3 +83,15 @@ applications:
   #       selfHeal: true
   #     syncOptions:
   #       - CreateNamespace=true
+
+  - name: monitoring
+    repoURL: https://github.com/marcruz1997/git-ops-apps-of-apps.git
+    path: clusters/ocp-cluster/monitoring
+    destinationNamespace: openshift-monitoring
+    destinationServer: https://kubernetes.default.svc
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
